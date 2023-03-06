@@ -1,0 +1,15 @@
+.graph_group_style {
+    background-color: pink;
+}
+
+.graph_column_div {
+    composes: graph_group_style;
+    display: flex;
+    flex-direction: column;
+}
+.graph_row_div {
+    composes: graph_group_style;
+    display: flex;
+    flex-direction: row;
+}
+

@@ -1,0 +1,21 @@
+
+:root{
+    --unit-color: 10px
+}
+.container_color_div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width:72px;
+    background-color: var(--temp-color0);
+}
+.container_color_div button{
+    width: var(--unit-color);
+    height: var(--unit-color);
+    border-radius: 1px;
+    margin: 1px;
+    flex: initial;
+    background-color: red;
+}

@@ -1,15 +1,24 @@
-import express from "express";
+import express, { Request, Response } from "express";
+
+import * as mongoDB from "mongodb";
+import * as dotenv from "dotenv";
 import { connectToDB } from "./services/database.services";
 import { userAccountRouter } from "./routes/userAccount.router";
+import morgan from "morgan";
+
+dotenv.config();
+const port = process.env.PORT;
 
 const app = express();
+// http logger
+app.use(morgan("tiny"));
 
 connectToDB()
     .then(() => {
-        app.use("/", userAccountRouter);
+        app.use("/userAccounts", userAccountRouter);
 
-        app.listen(process.env.PORT, () => {
-            console.log(`Server started at http://localhost:${process.env.PORT}`);
+        app.listen(port, () => {
+            console.log(`listening... on port ${port} XDXDXD`);
         });
     })
     .catch((error: Error) => {

@@ -1,0 +1,70 @@
+:root {
+    --width: 25px;
+    --gap: 0.5px;
+}
+.switch_button_track_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+
+    width: var(--width);
+    height: calc(var(--width)*0.5);
+    border-radius: calc(var(--width)*0.25);
+    border-color: red;
+}
+.checked{
+    background-color: var(--backgroud-color0);
+}
+.unchecked{
+    background-color: var(--backgroud-color1);
+}
+.switch_button_track_div div {
+    flex: auto;
+    height: calc(var(--width)*0.5 - var(--gap)*2);
+}
+.switch_button_track_div input {
+    position: absolute;
+    z-index: 6;
+    /*able to click but hidden*/
+    opacity: 0; 
+    animation: moveLeft var(--switch-move-animation) forwards;
+}
+.switch_button_track_div input:checked {
+    animation: moveRight var(--switch-move-animation) forwards;
+}
+
+.switch_thumb_input~label {
+    position: absolute;
+
+    width: calc(var(--width)*0.5 - var(--gap)*2);
+    height: calc(var(--width)*0.5 - var(--gap)*2);
+    border-radius: calc(var(--width)*0.25 - var(--gap));
+    z-index: 5;
+
+    background-color: var(--main-color0);
+
+    animation: moveLeft var(--switch-move-animation) forwards;
+}
+.switch_thumb_input:checked~label{
+    background-color: var(--main-color1);
+    animation: moveRight var(--switch-move-animation) forwards;
+}
+
+@keyframes moveRight {
+    from{ 
+      left: 1%;
+    }
+    to{ 
+      left: 49%;
+    }
+  }
+  @keyframes moveLeft {
+    from{ 
+      left: 49%;
+    }
+    to{ 
+      left: 1%;
+    }
+  }

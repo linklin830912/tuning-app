@@ -8,7 +8,7 @@ export const collections: {
 export async function connectToDB() {
     dotenv.config();
     const client: mongoDB.MongoClient = new mongoDB.MongoClient(process.env.CONNECTION_STRING);
-    console.log("!!!client", client);
+
     await client.connect();
 
     const userDb: mongoDB.Db = client.db(process.env.USER_DB_NAME);
@@ -19,4 +19,6 @@ export async function connectToDB() {
     console.log(
         `Successfully connected to database: ${userDb.databaseName} and collection: ${userAccountCollection.collectionName}`,
     );
+
+    return userAccountCollection;
 }
